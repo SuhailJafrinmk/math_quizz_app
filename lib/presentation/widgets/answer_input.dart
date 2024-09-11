@@ -19,6 +19,7 @@ final GlobalKey<FormState> formKey;
 }
 
 class _AnswerInputState extends State<AnswerInput> {
+
 final TextEditingController _controller = TextEditingController();
 
   @override
@@ -41,10 +42,9 @@ final TextEditingController _controller = TextEditingController();
                   text: 'Submit',
                 ontap: () {
                   if(widget.formKey.currentState!.validate()){
-                    context.read<TimerCubit>().startTimer();
-                    BlocProvider.of<QuestionBloc>(context).add(SubmitAnswer(int.parse(_controller.text).toDouble()));
+                    BlocProvider.of<QuestionBloc>(context).add(SubmitAnswer(double.parse(_controller.text)));
                     BlocProvider.of<QuestionBloc>(context).add(LoadNewQuestion());
-
+                    // _controller.clear();
                   }
                 },
                 ),
@@ -54,10 +54,9 @@ final TextEditingController _controller = TextEditingController();
                 child: CustomButtonBlack(
                 text: 'Next',
                 ontap: () {
-                  context.read<TimerCubit>().startTimer();
                   BlocProvider.of<QuestionBloc>(context).add(SubmitAnswer(0.0));
                   BlocProvider.of<QuestionBloc>(context).add(LoadNewQuestion());
-                  BlocProvider.of<ScoreBloc>(context).add(QuestionIncrement());
+                 
                 },
                 ),
               ),

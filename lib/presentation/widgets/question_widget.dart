@@ -20,7 +20,7 @@ class QuestionWidget extends StatelessWidget {
         children: [
           Container(
         padding: EdgeInsets.all(10),
-        height: size.height*.3,
+        height: size.height*.25,
         width: size.width*.9,
         child: Text(
         "q) Calculate the result: ${question.firstOperand} ${question.operator} ${question.secondOperand} ?",

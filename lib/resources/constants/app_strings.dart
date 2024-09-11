@@ -38,4 +38,5 @@ class AppStrings {
 
   //asset path 
   static const welcomeSvg='assets/vectors/welcome_screen.svg';
+  static const tickingMp3='audio/ticking_sound.mp3';
 }

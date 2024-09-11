@@ -13,7 +13,7 @@ class Question {
     required this.correctAnswer,
   });
 
-  // Factory method to generate a random question
+
   factory Question.generateRandomQuestion() {
     final random = Random();
     final operators = ['+', '-', '*', '/'];
@@ -21,7 +21,6 @@ class Question {
     int secondOperand = random.nextInt(100) + 1;
     String operator = operators[random.nextInt(4)];
 
-    // Compute the correct answer based on the operator
     double correctAnswer;
     switch (operator) {
       case '+':

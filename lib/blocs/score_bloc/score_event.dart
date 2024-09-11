@@ -4,4 +4,3 @@ part of 'score_bloc.dart';
 sealed class ScoreEvent {}
 class AnswerWrong extends ScoreEvent{}
 class AnswerRight extends ScoreEvent{}
-class QuestionIncrement extends ScoreEvent{}
