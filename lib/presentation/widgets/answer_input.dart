@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:math_quizz_app/blocs/quesion_bloc/question_bloc.dart';
 import 'package:math_quizz_app/blocs/score_bloc/score_bloc.dart';
+import 'package:math_quizz_app/blocs/timer_cubi/timer_cubit.dart';
 import 'package:math_quizz_app/presentation/widgets/custom_button.dart';
 import 'package:math_quizz_app/presentation/widgets/custom_textfield.dart';
 import 'package:math_quizz_app/utils/custom_snackbar.dart';
@@ -40,7 +41,10 @@ final TextEditingController _controller = TextEditingController();
                   text: 'Submit',
                 ontap: () {
                   if(widget.formKey.currentState!.validate()){
+                    context.read<TimerCubit>().startTimer();
                     BlocProvider.of<QuestionBloc>(context).add(SubmitAnswer(int.parse(_controller.text).toDouble()));
+                    BlocProvider.of<QuestionBloc>(context).add(LoadNewQuestion());
+
                   }
                 },
                 ),
@@ -50,9 +54,10 @@ final TextEditingController _controller = TextEditingController();
                 child: CustomButtonBlack(
                 text: 'Next',
                 ontap: () {
+                  context.read<TimerCubit>().startTimer();
                   BlocProvider.of<QuestionBloc>(context).add(SubmitAnswer(0.0));
-                    BlocProvider.of<QuestionBloc>(context).add(LoadNewQuestion());
-                    BlocProvider.of<ScoreBloc>(context).add(QuestionIncrement());
+                  BlocProvider.of<QuestionBloc>(context).add(LoadNewQuestion());
+                  BlocProvider.of<ScoreBloc>(context).add(QuestionIncrement());
                 },
                 ),
               ),

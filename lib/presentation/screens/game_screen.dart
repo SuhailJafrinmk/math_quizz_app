@@ -10,6 +10,7 @@ import 'package:math_quizz_app/presentation/widgets/score_board.dart';
 import 'package:math_quizz_app/utils/custom_snackbar.dart';
 import 'package:math_quizz_app/utils/right_answer_dialogue.dart';
 import 'package:math_quizz_app/utils/wrong_answer_dialogue.dart';
+import 'package:quickalert/quickalert.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -42,10 +43,12 @@ class _GameScreenState extends State<GameScreen> {
                 listener: (context, state) {
                   if (state is WrongAnswer) {
                     BlocProvider.of<ScoreBloc>(context).add(AnswerWrong());
-                    showWrongAnswerDialog(context);
+                    QuickAlert.show(context: context, type: QuickAlertType.error,title: 'better luck',text: 'Its a wrong answer');
+                    // showWrongAnswerDialog(context);
                   } else if (state is CorrectAnswer) {
                     BlocProvider.of<ScoreBloc>(context).add(AnswerRight());
-                    showCorrectAnswerDialog(context);
+                    QuickAlert.show(context: context, type: QuickAlertType.success,title: 'yureekaa',text: 'Its a right answer');
+                    // showCorrectAnswerDialog(context);
                   }
                 },
                 builder: (context, state) {

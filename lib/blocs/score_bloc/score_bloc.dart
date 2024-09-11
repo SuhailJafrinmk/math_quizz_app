@@ -9,7 +9,6 @@ part 'score_state.dart';
 class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
   int correctanswer=0;
   int wronganswer=0;
-  int question=0;
   ScoreBloc() : super(ScoreInitial()) {
     on<AnswerRight>(correctAnswer);
     on<AnswerWrong>(wrongAnswer);
@@ -27,10 +26,8 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
 
 
   FutureOr<void> questionIncrement(QuestionIncrement event, Emitter<ScoreState> emit) {
-    question++;
-    if(question==10){
+    if(correctanswer+wronganswer==10){
       emit(ShowScoreBoard(rightAnswers:correctanswer,wrongAnsers: wronganswer));
-      question=0;
       correctanswer=0;
       wronganswer=0;
     }
