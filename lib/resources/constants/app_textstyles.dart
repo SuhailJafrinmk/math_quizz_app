@@ -34,7 +34,7 @@ class AppTextStyles {
   // Style for buttons or actionable items
   static const TextStyle buttonText = TextStyle(
     fontSize: 16.0,
-    color: Colors.white,
+    color: Colors.black,
     fontWeight: FontWeight.bold,
   );
 

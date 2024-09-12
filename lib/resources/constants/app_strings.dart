@@ -39,4 +39,8 @@ class AppStrings {
   //asset path 
   static const welcomeSvg='assets/vectors/welcome_screen.svg';
   static const tickingMp3='audio/ticking_sound.mp3';
+  static const boardNoBorder='assets/images/blackboard_noborder.jpg';
+  static const boardWithBorder='assets/images/blackboard_border.jpg';
+  static const tgBg='assets/images/tg_bg.jpeg';
+  static const kingsLetter='assets/images/kings_notice.png';
 }

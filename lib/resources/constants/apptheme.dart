@@ -9,10 +9,11 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.backgroundColor,
       fontFamily: 'Roboto',
       // Define the text theme for the entire app
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         displayLarge: AppTextStyles.heading1,
         displayMedium: AppTextStyles.heading2,
-        displaySmall: AppTextStyles.bodyText
+        displaySmall: AppTextStyles.bodyText,
+        bodySmall: AppTextStyles.buttonText,
       ),
 
 
@@ -24,11 +25,11 @@ class AppTheme {
         contentPadding: const EdgeInsets.all(16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.borderColor),
+          borderSide: const BorderSide(color: AppColors.borderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: AppColors.primaryColor, width: 2.0),
+          borderSide: const BorderSide(color: AppColors.primaryColor, width: 2.0),
         ),
         errorStyle: AppTextStyles.errorText,
       ),
@@ -38,11 +39,11 @@ class AppTheme {
         color: AppColors.primaryColor,
         elevation: 4.0,
         titleTextStyle: AppTextStyles.heading1.copyWith(color: Colors.white),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
 
       // Define the style for bottom navigation bar
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.primaryColor,
         selectedItemColor: AppColors.accentColor,
         unselectedItemColor: AppColors.textSecondary,

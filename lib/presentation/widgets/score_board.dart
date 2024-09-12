@@ -1,75 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:math_quizz_app/resources/constants/app_strings.dart';
 
 class ScoreboardDialog extends StatelessWidget {
   final int correctAnswers;
   final int wrongAnswers;
-  final int score; // Accept score through the constructor
+  final int score;
 
   const ScoreboardDialog({
     Key? key,
     required this.correctAnswers,
     required this.wrongAnswers,
-    required this.score, // Constructor parameter for score
+    required this.score,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Quiz Scoreboard'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
+    final theme=Theme.of(context).textTheme;
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-          const Text(
-            'Quiz Score',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(AppStrings.kingsLetter), 
+                fit: BoxFit.fill, 
+              ),
+            ),
+            height: 400, 
+            padding: const EdgeInsets.all(50),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                 Text(
+                  'Scoreboard',
+                  style: theme.displayLarge?.copyWith(color: Color(0xFF4E3629)),
+                ),
+                const SizedBox(height: 40),
+
+                Text(
+                  'Correct Answers: $correctAnswers',
+                  style: theme.displayMedium?.copyWith(color: Color(0xFF3C3C3C)),
+                ),
+                const SizedBox(height: 10),
+
+                Text(
+                  'Wrong Answers: $wrongAnswers',
+                  style: theme.displayMedium?.copyWith(color: Color(0xFF5B2323)),
+                ),
+                const SizedBox(height: 10),
+
+                Text(
+                  'Total Score: $score',
+                  style: theme.displayMedium?.copyWith(color: Colors.black),
+                ),
+                const SizedBox(height: 20),
+
+                Align(
+                  alignment: Alignment.bottomCenter, 
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(); 
+                    },
+                    child:  Text(
+                      'Play again',
+                      style: theme.bodySmall?.copyWith(fontSize: 30,color: Color(0xFF4E3629)),
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 20),
-          _buildScoreCard('Correct Answers', correctAnswers, Colors.green),
-          const SizedBox(height: 10),
-          _buildScoreCard('Wrong Answers', wrongAnswers, Colors.red),
-          const SizedBox(height: 20),
-          _buildScoreCard('Total Score', score, Colors.blue), // Display score passed in
         ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop(); // Dismiss the dialog
-          },
-          child: const Text('Close'),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildScoreCard(String title, int count, Color color) {
-    return Card(
-      elevation: 2,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              '$count',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: color,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -78,16 +87,13 @@ class ScoreboardDialog extends StatelessWidget {
 void showScoreboardDialog(BuildContext context, int correctAnswers, int wrongAnswers, int score) {
   showDialog(
     context: context,
-    barrierDismissible: true, // Dialog can be dismissed by tapping outside
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return ScoreboardDialog(
         correctAnswers: correctAnswers,
         wrongAnswers: wrongAnswers,
-        score: score, // Pass the score to the dialog
+        score: score,
       );
     },
   );
 }
-
-
-
