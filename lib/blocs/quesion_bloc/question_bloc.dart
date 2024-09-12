@@ -13,16 +13,17 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
     on<SubmitAnswer>(submitAnswer);
   }
 
-  FutureOr<void> loadNewQuestion(LoadNewQuestion event, Emitter<QuestionState> emit) {
-      final question=questionRepository.generateQuestion();
-      emit(QuestionLoaded(question));
+  FutureOr<void> loadNewQuestion(
+      LoadNewQuestion event, Emitter<QuestionState> emit) {
+    final question = questionRepository.generateQuestion();
+    emit(QuestionLoaded(question));
   }
 
   FutureOr<void> submitAnswer(SubmitAnswer event, Emitter<QuestionState> emit) {
-    final question=(state as QuestionLoaded).question;
-    if(question.correctAnswer==event.answer){
+    final question = (state as QuestionLoaded).question;
+    if (question.correctAnswer == event.answer) {
       emit(CorrectAnswer());
-    }else{
+    } else {
       emit(WrongAnswer());
     }
   }

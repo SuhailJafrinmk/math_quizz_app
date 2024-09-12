@@ -11,10 +11,10 @@ class CustomTextField extends StatelessWidget {
   final Color? errorBorder;
   final Widget? suffixIcon;
   final Color? focusedBorderColor;
-  final Color? enabledBorderColor; // Add this for normal border
+  final Color? enabledBorderColor;
   final String? prefixText;
   final ValueChanged<String>? onChanged;
-  
+
   CustomTextField({
     super.key,
     required this.hintText,
@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
     this.errorBorder,
     this.suffixIcon,
     this.focusedBorderColor,
-    this.enabledBorderColor, // Add this for normal border
+    this.enabledBorderColor,
     this.prefixText,
     this.onChanged,
   });
@@ -59,7 +59,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 2,
-            color: enabledBorderColor ?? Colors.grey, // Normal border when not focused
+            color: enabledBorderColor ?? Colors.grey,
             style: BorderStyle.solid,
           ),
         ),
@@ -85,7 +85,8 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:math_quizz_app/blocs/math_fact/random_fact_bloc.dart';
 import 'package:math_quizz_app/blocs/quesion_bloc/question_bloc.dart';
 import 'package:math_quizz_app/blocs/score_bloc/score_bloc.dart';
 import 'package:math_quizz_app/blocs/timer_cubi/timer_cubit.dart';
@@ -8,9 +9,8 @@ import 'package:math_quizz_app/presentation/screens/welcome_screen.dart';
 import 'package:math_quizz_app/resources/constants/apptheme.dart';
 
 void main() {
-  QuestionRepository repository=QuestionRepository();
-  runApp(
-    MultiBlocProvider(
+  QuestionRepository repository = QuestionRepository();
+  runApp(MultiBlocProvider(
     providers: [
       BlocProvider(
         create: (context) => QuestionBloc(repository),
@@ -20,12 +20,15 @@ void main() {
       ),
       BlocProvider(
         create: (context) => TimerCubit(),
+      ),
+      BlocProvider(
+        create: (context) => RandomFactBloc(),
       )
-
     ],
     child: MyApp(),
   ));
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

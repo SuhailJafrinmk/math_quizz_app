@@ -13,7 +13,6 @@ class Question {
     required this.correctAnswer,
   });
 
-
   factory Question.generateRandomQuestion() {
     final random = Random();
     final operators = ['+', '-', '*', '/'];

@@ -11,8 +11,8 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size=MediaQuery.of(context).size;
-    final theme=Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
+    final theme = Theme.of(context).textTheme;
     return Material(
       borderRadius: BorderRadius.circular(10),
       clipBehavior: Clip.hardEdge,
@@ -20,29 +20,33 @@ class QuestionWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-        padding: EdgeInsets.all(10),
-        height: size.height*.25,
-        width: size.width*.9,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppStrings.boardWithBorder),fit: BoxFit.fill),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-        "q) Calculate the result: ${question.firstOperand} ${question.operator} ${question.secondOperand} ?",
-        style: theme.displayLarge?.copyWith(color: Colors.white),
-      ),
-          BlocBuilder<TimerCubit, int>(
-        builder: (context, state) {
-          return Text('$state',style: theme.displayLarge?.copyWith(fontSize: 40,color: Colors.white),);
-        },
-      )
-          ],
-        ),
-      ),
-     
-  
+            padding: const EdgeInsets.all(10),
+            height: size.height * .25,
+            width: size.width * .9,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(AppStrings.boardWithBorder),
+                  fit: BoxFit.fill),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "q) Calculate the result: ${question.firstOperand} ${question.operator} ${question.secondOperand} ?",
+                  style: theme.displayLarge?.copyWith(color: Colors.white),
+                ),
+                BlocBuilder<TimerCubit, int>(
+                  builder: (context, state) {
+                    return Text(
+                      '$state',
+                      style: theme.displayLarge
+                          ?.copyWith(fontSize: 40, color: Colors.white),
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );

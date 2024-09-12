@@ -13,12 +13,11 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
   ScoreBloc() : super(ScoreInitial()) {
     on<AnswerRight>(correctAnswer);
     on<AnswerWrong>(wrongAnswer);
-
   }
 
   FutureOr<void> correctAnswer(AnswerRight event, Emitter<ScoreState> emit) {
     correctanswer++;
-      if (correctanswer + wronganswer == 10) {
+    if (correctanswer + wronganswer == 10) {
       emit(ShowScoreBoard(
         rightAnswers: correctanswer,
         wrongAnsers: wronganswer,
@@ -27,11 +26,10 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
       _resetScore();
     }
   }
-
 
   FutureOr<void> wrongAnswer(AnswerWrong event, Emitter<ScoreState> emit) {
-        wronganswer++;
-        if (correctanswer + wronganswer == 10) {
+    wronganswer++;
+    if (correctanswer + wronganswer == 10) {
       emit(ShowScoreBoard(
         rightAnswers: correctanswer,
         wrongAnsers: wronganswer,
@@ -40,7 +38,6 @@ class ScoreBloc extends Bloc<ScoreEvent, ScoreState> {
       _resetScore();
     }
   }
-
 
   // Helper function to reset score values
   void _resetScore() {

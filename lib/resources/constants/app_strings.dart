@@ -43,4 +43,5 @@ class AppStrings {
   static const boardWithBorder='assets/images/blackboard_border.jpg';
   static const tgBg='assets/images/tg_bg.jpeg';
   static const kingsLetter='assets/images/kings_notice.png';
+  static const bulbImage='assets/images/fact_bulb_image.png';
 }

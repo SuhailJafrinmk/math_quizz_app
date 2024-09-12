@@ -12,7 +12,7 @@ void showCorrectAnswerDialog(BuildContext context) {
           TextButton(
             child: Text('OK'),
             onPressed: () {
-              Navigator.of(context).pop(); // Close the dialog
+              Navigator.of(context).pop(); 
             },
           ),
         ],
